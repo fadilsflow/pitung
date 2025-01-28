@@ -64,7 +64,7 @@ export default function Navbar() {
         <div className="flex items-center gap-6">
           <Link href="/" className="flex items-center space-x-2">
             <PitungLogo className="h-8 w-8" />
-            <span className="hidden text-xl font-bold sm:inline-block">Pitung</span>
+            <span className="hidden text-xl font-bold sm:inline-block">Pitung Inc.</span>
           </Link>
           <nav className="hidden md:flex">
             <NavigationMenu>

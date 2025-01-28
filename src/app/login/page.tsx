@@ -1,14 +1,7 @@
 import { redirect } from "next/navigation";
-import { createClient } from "~/app/utils/supabase/server";
-import GoogleSignin from "./GoogleSignin";
 
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "~/components/ui/card";
+import { createClient } from "../utils/supabase/server";
+import { LoginForm } from "./login-form";
 
 export default async function LoginPage() {
   const supabase = await createClient();
@@ -17,21 +10,12 @@ export default async function LoginPage() {
   if (data.user) {
     redirect("/home");
   }
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-primary/20 to-secondary/20">
-      <Card className="w-[350px]">
-        <CardHeader className="space-y-1">
-          <CardTitle className="text-center text-2xl">
-            Welcome to Pitung
-          </CardTitle>
-          <CardDescription className="text-center">
-            Sign in to access your financial dashboard
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="grid gap-4">
-          <GoogleSignin />
-        </CardContent>
-      </Card>
+    <div className="flex min-h-svh flex-col items-center justify-center gap-6 bg-background p-6 md:p-10">
+      <div className="w-full max-w-sm">
+        <LoginForm />
+      </div>
     </div>
   );
 }
