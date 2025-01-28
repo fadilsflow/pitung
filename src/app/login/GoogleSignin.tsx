@@ -7,7 +7,7 @@ import { Loader2 } from "lucide-react";
 import Image from "next/image";
 import { Button } from "~/components/ui/button";
 
-import { createClient } from "~/utils/supabase/client";
+import { createClient } from "~/app/utils/supabase/client";
 import { toast } from "sonner";
 
 export default function GoogleSignin() {
