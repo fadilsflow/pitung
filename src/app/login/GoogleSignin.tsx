@@ -6,8 +6,9 @@ import { useSearchParams } from "next/navigation";
 import { Loader2 } from "lucide-react";
 import Image from "next/image";
 import { Button } from "~/components/ui/button";
-import { toast } from "~/hooks/use-toast";
+
 import { createClient } from "~/utils/supabase/client";
+import { toast } from "sonner";
 
 export default function GoogleSignin() {
   const [isGoogleLoading, setIsGoogleLoading] = useState<boolean>(false);
@@ -33,10 +34,10 @@ export default function GoogleSignin() {
         throw error;
       }
     } catch (error) {
-      toast({
-        title: "Please try again.",
-        description: "There was an error logging in with Google.",
-        variant: "destructive",
+      console.error(error);
+
+      toast.error("Please try again.", {
+        description: "There was an error logging in with Google",
       });
       setIsGoogleLoading(false);
     }
