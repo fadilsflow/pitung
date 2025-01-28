@@ -1,9 +1,7 @@
 import Image from "next/image";
 import { redirect } from "next/navigation";
-import { Avatar, AvatarFallback, AvatarImage } from "~/components/ui/avatar";
 import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
-import { Button } from "~/components/ui/button";
-import { UserCircle2, Mail, LogOut } from "lucide-react";
+import { Mail } from "lucide-react";
 import LogoutButton from "~/components/button/LogoutButton";
 import { createClient } from "~/app/utils/supabase/server";
 
