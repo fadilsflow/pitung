@@ -14,9 +14,9 @@ export default async function Home() {
     data: { user },
   } = await supabase.auth.getUser();
 
-  if (user) {
-    return redirect("/dashboard");
-  }
+  //if (user) {
+  //  return redirect("/dashboard");
+  //}
 
   // void api.post.getLatest.prefetch();
 

@@ -1,5 +1,4 @@
 "use client"
-
 import * as React from "react"
 import Link from "next/link"
 import { cn } from "~/lib/utils"
@@ -16,6 +15,7 @@ import {
 import { Button } from "~/components/ui/button"
 import { Menu, X } from "lucide-react"
 import PitungLogo from "./PitungLogo"
+import AuthNavButton from "./AuthNavButton"
 
 const navigationItems = [
   {
@@ -56,7 +56,6 @@ const navigationItems = [
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false)
-
   
   return (
     <header className="sticky top-0 z-50 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b mb-5">
@@ -95,17 +94,15 @@ export default function Navbar() {
             </NavigationMenu>
           </nav>
         </div>
-        <div className="flex items-center gap-4">
-          <Link href="/login" className="hidden lg:block">
-            <Button variant="ghost">Sign in with Google</Button>
-          </Link>
+<div className="flex items-center gap-4">
+          <AuthNavButton />
           <ModeToggle />
           <Button variant="ghost" size="icon" className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
             {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </Button>
         </div>
       </div>
-      {isMenuOpen && (
+{isMenuOpen && (
         <div className="container py-4 md:hidden">
           <nav className="flex flex-col space-y-4">
             {navigationItems.map((item) => (
@@ -130,18 +127,13 @@ export default function Navbar() {
                 )}
               </div>
             ))}
-            <Link href="/login" className="mt-4">
-              <Button variant="default" className="w-full">
-                Sign in with Google
-              </Button>
-            </Link>
+            <AuthNavButton />
           </nav>
         </div>
       )}
     </header>
   )
 }
-
 const ListItem = React.forwardRef<React.ElementRef<"a">, React.ComponentPropsWithoutRef<"a">>(
   ({ className, title, children, ...props }, ref) => {
     return (

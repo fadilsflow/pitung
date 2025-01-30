@@ -1,3 +1,4 @@
+
  //page templates
 import { redirect } from "next/navigation";
 import { createClient } from "~/app/utils/supabase/server";
