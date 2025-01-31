@@ -25,7 +25,7 @@ export default async function Home() {
       <main className="ml-10 mr-10">
         <Navbar />
         <Hero />
-        <Footer />
+        //<Footer />
         {/* <footer><p>footer</p></footer> */}
       </main>
     </HydrateClient>

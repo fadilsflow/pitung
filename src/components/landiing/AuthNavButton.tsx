@@ -32,7 +32,7 @@ export default function AuthNavButton() {
   return (
     <div className="hidden lg:block">
       {user ? (
-        <Link href="/dashboard">
+        <Link href="/Dashboard">
           <Button variant="default">Dashboard</Button>
         </Link>
       ) : (

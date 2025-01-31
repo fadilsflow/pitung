@@ -1,4 +1,5 @@
- //page templates
+// page templates
+import Link from "next/link";
 import { redirect } from "next/navigation";
 import { createClient } from "~/app/utils/supabase/server";
 
@@ -20,17 +21,13 @@ export default async function Page() {
   
   const metadata = user?.user_metadata as UserMetadata;
 
-   //   <pre className="mt-2 max-h-40  text-xs">
-   //  {JSON.stringify(user, null, 2)}
-   //  </pre>
-
   if (error || !user) {
     redirect("/login");
   }
 
   return (
   <div>
-
-     </div>
+    <Link href={"/Dashboard/Settings"}>go to settings</Link>
+</div>
   )
 }

@@ -6,7 +6,7 @@ import { type Metadata } from "next";
 import { TRPCReactProvider } from "~/trpc/react";
 import { Toaster } from "~/components/ui/sonner";
 import { ThemeProvider } from "~/components/theme/theme-provider";
-//
+import Footer from "~/components/landiing/Footer";
 export const metadata: Metadata = {
   title: "Pitung",
   description: "Pintar Itung",
@@ -30,6 +30,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <TRPCReactProvider>{children}</TRPCReactProvider>
+          <Footer/>
           <Toaster />
         </ThemeProvider>
       </body>
