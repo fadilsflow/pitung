@@ -1,29 +1,67 @@
-# Create T3 App
+# Next.js Multi-tenant Starter Template
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+A minimalistic multi-tenant Next.js starter template with minimal setup and a modular design. Bring your own backend and database.
 
-## What's next? How do I make an app with this?
+[Demo](https://stack-template.vercel.app/)
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+## Landing Page
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+<div align="center">
+<img src="./assets/landing-page.png" alt="Teams" width="600"/>
+</div>
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Drizzle](https://orm.drizzle.team)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+## Dashboard
 
-## Learn More
+<div align="center">
+<img src="./assets/dashboard-overview.png" alt="Teams" width="600"/>
+</div>
 
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
+## Multi-tenancy (Teams)
 
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
+<div align="center">
+<img src="./assets/team-switcher.png" alt="Teams" width="400"/>
+</div>
 
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
+## Account Settings
 
-## How do I deploy this?
+<div align="center">
+<img src="./assets/account-settings.png" alt="Teams" width="500"/>
+</div>
 
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+## Getting Started
+
+1. Clone the repository
+
+    ```bash
+    git clone git@github.com:stack-auth/stack-template.git
+    ```
+
+2. Install dependencies
+
+    ```bash
+    npm install
+    ```
+
+3. Register an account on [Stack Auth](https://stack-auth.com), copy the keys from the dashboard, and paste them into the `.env.local` file. Then, enable "client team creation" on the team settings tab.
+
+    If you want to learn more about Stack Auth or self-host it, check out the [Docs](https://docs.stack-auth.com) and [GitHub](https://github.com/stack-auth/stack).
+
+4. Start the development server and go to [http://localhost:3000](http://localhost:3000)
+
+    ```bash
+    npm run dev 
+    ```
+
+## Features & Tech Stack
+
+- Next.js 14 app router
+- TypeScript
+- Tailwind & Shadcn UI
+- Stack Auth
+- Multi-tenancy (teams/orgs)
+- Dark mode
+
+## Inspired by
+
+- [Shadcn UI](https://github.com/shadcn-ui/ui)
+- [Shadcn Taxonomy](https://github.com/shadcn-ui/taxonomy)
