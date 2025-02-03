@@ -1,33 +1,26 @@
-import { AppSidebar } from "~/components/app-sidebar"
-import { Separator } from "~/components/ui/separator"
+import { AppSidebar } from "~/components/app-sidebar";
+import { Separator } from "~/components/ui/separator";
 import {
   SidebarInset,
   SidebarProvider,
   SidebarTrigger,
-} from "~/components/ui/sidebar"
-import { createClient } from "~/app/utils/supabase/server"
-import { headers } from 'next/headers'
+} from "~/components/ui/sidebar";
+import { createClient } from "~/app/utils/supabase/server";
+import { redirect } from "next/navigation";
 
 export default async function Layout({ children }) {
   // create supabase client
-  const supabase = await createClient()
-  
+  const supabase = await createClient();
+
   // user data
   const {
     data: { user },
     error,
-  } = await supabase.auth.getUser()
-  
-  if (error || !user) {
-    redirect("/login")
-  }
+  } = await supabase.auth.getUser();
 
-  // Get current path
-const headersList = await headers();
-const pathname = headersList.get('x-invoke-path') || '';
-console.log(pathname); // Cek di terminal server, apakah pathname-nya benar
-  // Split path into segments
-  const pathSegments = pathname.split('/').filter(Boolean)
+  if (error || !user) {
+    redirect("/login");
+  }
 
   return (
     <SidebarProvider>
@@ -42,5 +35,5 @@ console.log(pathname); // Cek di terminal server, apakah pathname-nya benar
         <main>{children}</main>
       </SidebarInset>
     </SidebarProvider>
-  )
+  );
 }

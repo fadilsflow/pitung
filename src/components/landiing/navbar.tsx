@@ -1,8 +1,8 @@
-"use client"
-import * as React from "react"
-import Link from "next/link"
-import { cn } from "~/lib/utils"
-import { ModeToggle } from "~/components/theme/mode-toggle"
+"use client";
+import * as React from "react";
+import Link from "next/link";
+import { cn } from "~/lib/utils";
+import { ModeToggle } from "~/components/theme/mode-toggle";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -11,59 +11,40 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
-} from "~/components/ui/navigation-menu"
-import { Button } from "~/components/ui/button"
-import { Menu, X } from "lucide-react"
-import PitungLogo from "./PitungLogo"
-import AuthNavButton from "./AuthNavButton"
+} from "~/components/ui/navigation-menu";
+import { Button } from "~/components/ui/button";
+import { Menu, X } from "lucide-react";
+import PitungLogo from "./PitungLogo";
+import AuthNavButton from "./AuthNavButton";
 
 const navigationItems = [
-  {
-    title: "Financial Statements",
-    items: [
-      { title: "Balance Sheet", href: "/balance-sheet", description: "View your financial position at a glance." },
-      {
-        title: "Income Statement",
-        href: "/income-statement",
-        description: "Track your revenues and expenses over time.",
-      },
-      { title: "Cash Flow", href: "/cash-flow", description: "Monitor your cash inflows and outflows." },
-    ],
-  },
-  {
-    title: "Tools",
-    items: [
-      {
-        title: "Financial Ratios",
-        href: "/financial-ratios",
-        description: "Calculate and interpret key financial ratios for better decision-making.",
-      },
-      {
-        title: "Budgeting",
-        href: "/budgeting",
-        description: "Plan and manage your company's financial resources effectively.",
-      },
-      {
-        title: "Reports",
-        href: "/reports",
-        description: "Generate comprehensive financial reports for stakeholders and regulators.",
-      },
-    ],
-  },
-  { title: "Documentation", href: "/docs" },
-]
-
+  // {
+  //   title: "Financial Statements",
+  //   items: [
+  //     { title: "Balance Sheet", href: "/balance-sheet", description: "View your financial position at a glance." },
+  //     {
+  //       title: "Income Statement",
+  //       href: "/income-statement",
+  //       description: "Track your revenues and expenses over time.",
+  //     },
+  //     { title: "Cash Flow", href: "/cash-flow", description: "Monitor your cash inflows and outflows." },
+  //   ],
+  // },
+  // { title: "Documentation", href: "#" },
+];
 
 export default function Navbar() {
-  const [isMenuOpen, setIsMenuOpen] = React.useState(false)
-  
+  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+
   return (
-    <header className="sticky top-0 z-50 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b mb-5">
+    <header className="sticky top-0 z-50 mb-5 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between">
         <div className="flex items-center gap-6">
           <Link href="/" className="flex items-center space-x-2">
             <PitungLogo className="h-8 w-8" />
-            <span className="hidden text-xl font-bold sm:inline-block">Pitung Inc.</span>
+            <span className="hidden text-xl font-black sm:inline-block">
+              Pitung
+            </span>
           </Link>
           <nav className="hidden md:flex">
             <NavigationMenu>
@@ -72,11 +53,17 @@ export default function Navbar() {
                   <NavigationMenuItem key={item.title}>
                     {item.items ? (
                       <>
-                        <NavigationMenuTrigger>{item.title}</NavigationMenuTrigger>
+                        <NavigationMenuTrigger>
+                          {item.title}
+                        </NavigationMenuTrigger>
                         <NavigationMenuContent>
                           <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
                             {item.items.map((subItem) => (
-                              <ListItem key={subItem.title} title={subItem.title} href={subItem.href}>
+                              <ListItem
+                                key={subItem.title}
+                                title={subItem.title}
+                                href={subItem.href}
+                              >
                                 {subItem.description}
                               </ListItem>
                             ))}
@@ -85,7 +72,11 @@ export default function Navbar() {
                       </>
                     ) : (
                       <Link href={item.href} legacyBehavior passHref>
-                        <NavigationMenuLink className={navigationMenuTriggerStyle()}>{item.title}</NavigationMenuLink>
+                        <NavigationMenuLink
+                          className={navigationMenuTriggerStyle()}
+                        >
+                          {item.title}
+                        </NavigationMenuLink>
                       </Link>
                     )}
                   </NavigationMenuItem>
@@ -94,23 +85,32 @@ export default function Navbar() {
             </NavigationMenu>
           </nav>
         </div>
-<div className="flex items-center gap-4">
+        <div className="flex items-center gap-4">
           <AuthNavButton />
           <ModeToggle />
-          <Button variant="ghost" size="icon" className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-            {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          <Button
+            variant="ghost"
+            size="icon"
+            className="md:hidden"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            {isMenuOpen ? (
+              <X className="h-6 w-6" />
+            ) : (
+              <Menu className="h-6 w-6" />
+            )}
           </Button>
         </div>
       </div>
-{isMenuOpen && (
+      {isMenuOpen && (
         <div className="container py-4 md:hidden">
           <nav className="flex flex-col space-y-4">
             {navigationItems.map((item) => (
               <div key={item.title}>
                 {item.items ? (
                   <>
-                    <h3 className="font-semibold mb-2">{item.title}</h3>
-                    <ul className="pl-4 space-y-2">
+                    <h3 className="mb-2 font-semibold">{item.title}</h3>
+                    <ul className="space-y-2 pl-4">
                       {item.items.map((subItem) => (
                         <li key={subItem.title}>
                           <Link href={subItem.href} className="text-sm">
@@ -132,28 +132,30 @@ export default function Navbar() {
         </div>
       )}
     </header>
-  )
+  );
 }
-const ListItem = React.forwardRef<React.ElementRef<"a">, React.ComponentPropsWithoutRef<"a">>(
-  ({ className, title, children, ...props }, ref) => {
-    return (
-      <li>
-        <NavigationMenuLink asChild>
-          <a
-            ref={ref}
-            className={cn(
-              "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
-              className,
-            )}
-            {...props}
-          >
-            <div className="text-sm font-medium leading-none">{title}</div>
-            <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">{children}</p>
-          </a>
-        </NavigationMenuLink>
-      </li>
-    )
-  },
-)
-ListItem.displayName = "ListItem"
-
+const ListItem = React.forwardRef<
+  React.ElementRef<"a">,
+  React.ComponentPropsWithoutRef<"a">
+>(({ className, title, children, ...props }, ref) => {
+  return (
+    <li>
+      <NavigationMenuLink asChild>
+        <a
+          ref={ref}
+          className={cn(
+            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+            className,
+          )}
+          {...props}
+        >
+          <div className="text-sm font-medium leading-none">{title}</div>
+          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+            {children}
+          </p>
+        </a>
+      </NavigationMenuLink>
+    </li>
+  );
+});
+ListItem.displayName = "ListItem";
